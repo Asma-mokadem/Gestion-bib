@@ -15,10 +15,7 @@
             padding: 36px 20px;
         }
 
-        .page {
-            max-width: 680px;
-            margin: auto;
-        }
+        .page { max-width: 720px; margin: auto; }
 
         .topbar {
             display: flex;
@@ -28,18 +25,13 @@
         }
 
         .back-btn {
-            width: 34px;
-            height: 34px;
+            width: 34px; height: 34px;
             border-radius: 10px;
             background: #faf9f7;
             border: 1px solid #e2ddd6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; flex-shrink: 0;
         }
-
         .back-btn svg { width: 16px; height: 16px; fill: none; stroke: #7a6a5a; stroke-width: 2; }
 
         .page-title { font-size: 20px; font-weight: 600; color: #2d2620; letter-spacing: -0.3px; }
@@ -54,160 +46,142 @@
         }
 
         .card-label {
-            font-size: 11px;
-            font-weight: 500;
-            color: #b0a090;
-            letter-spacing: 0.7px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
+            font-size: 11px; font-weight: 500; color: #b0a090;
+            letter-spacing: 0.7px; text-transform: uppercase; margin-bottom: 16px;
         }
 
         .field-group { margin-bottom: 16px; }
         .field-group:last-of-type { margin-bottom: 20px; }
 
         label {
-            display: block;
-            font-size: 12px;
-            font-weight: 500;
-            color: #7a6a5a;
-            margin-bottom: 7px;
+            display: block; font-size: 12px; font-weight: 500;
+            color: #7a6a5a; margin-bottom: 7px;
         }
 
         input[type="text"] {
-            width: 100%;
-            padding: 11px 14px;
-            background: #f5f2ee;
-            border: 1px solid #e2ddd6;
-            border-radius: 10px;
-            font-size: 14px;
-            color: #2d2620;
-            font-family: inherit;
-            transition: border-color 0.18s, background 0.18s;
+            width: 100%; padding: 11px 14px;
+            background: #f5f2ee; border: 1px solid #e2ddd6;
+            border-radius: 10px; font-size: 14px; color: #2d2620;
+            font-family: inherit; transition: border-color 0.18s, background 0.18s;
         }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #a08060;
-            background: #faf9f7;
-        }
-
+        input[type="text"]:focus { outline: none; border-color: #a08060; background: #faf9f7; }
         input[type="text"]::placeholder { color: #c0b4a4; }
 
         .btn-submit {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 11px 22px;
-            background: #5a4535;
-            color: #f5f0ea;
-            border: none;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 500;
-            font-family: inherit;
-            cursor: pointer;
-            transition: background 0.18s;
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 22px; background: #5a4535; color: #f5f0ea;
+            border: none; border-radius: 10px; font-size: 13px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: background 0.18s;
         }
-
         .btn-submit:hover { background: #3d2e22; }
-
         .btn-submit svg { width: 14px; height: 14px; fill: #f5f0ea; }
 
-        .section-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .btn-cancel {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 18px; background: transparent; color: #9a8a78;
+            border: 1px solid #e2ddd6; border-radius: 10px; font-size: 13px;
+            font-weight: 500; font-family: inherit; cursor: pointer;
+            text-decoration: none; transition: background 0.18s;
+        }
+        .btn-cancel:hover { background: #ede8e0; }
+
+        .form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+        .edit-card {
+            background: #fff8f0;
+            border: 1px solid #f0d8bc;
+            border-radius: 18px;
+            padding: 24px;
             margin-bottom: 16px;
         }
+        .edit-card .card-label { color: #c86833; }
 
+        .section-head {
+            display: flex; align-items: center;
+            justify-content: space-between; margin-bottom: 16px;
+        }
         .section-title { font-size: 13px; font-weight: 500; color: #5a4535; }
-
         .count-badge {
-            font-size: 11px;
-            font-weight: 500;
-            color: #9a8a78;
-            background: #ede8e0;
-            padding: 3px 9px;
-            border-radius: 20px;
+            font-size: 11px; font-weight: 500; color: #9a8a78;
+            background: #ede8e0; padding: 3px 9px; border-radius: 20px;
         }
 
         table { width: 100%; border-collapse: collapse; }
-
-        thead tr {
-            border-bottom: 1px solid #e2ddd6;
-        }
-
+        thead tr { border-bottom: 1px solid #e2ddd6; }
         th {
-            text-align: left;
-            font-size: 11px;
-            font-weight: 500;
-            color: #b0a090;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            text-align: left; font-size: 11px; font-weight: 500;
+            color: #b0a090; letter-spacing: 0.5px; text-transform: uppercase;
             padding: 0 12px 12px;
         }
-
         th:first-child { padding-left: 0; }
-
-        tbody tr {
-            border-bottom: 1px solid #f0ece6;
-            transition: background 0.15s;
-        }
-
+        tbody tr { border-bottom: 1px solid #f0ece6; transition: background 0.15s; }
         tbody tr:last-child { border-bottom: none; }
         tbody tr:hover { background: #f5f2ee; }
-
-        td {
-            padding: 13px 12px;
-            font-size: 13px;
-            color: #3d3028;
-        }
-
+        td { padding: 12px 12px; font-size: 13px; color: #3d3028; }
         td:first-child { padding-left: 0; }
 
-        .id-cell {
-            font-size: 12px;
-            color: #b0a090;
-            font-weight: 400;
-            width: 50px;
-        }
+        .id-cell { font-size: 12px; color: #b0a090; width: 50px; }
 
         .avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #e8dff5;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: #7c5abf;
-            margin-right: 10px;
-            flex-shrink: 0;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: #e8dff5; display: inline-flex; align-items: center;
+            justify-content: center; font-size: 11px; font-weight: 600;
+            color: #7c5abf; margin-right: 10px; flex-shrink: 0;
         }
-
-        .name-cell {
-            display: flex;
-            align-items: center;
-        }
+        .name-cell { display: flex; align-items: center; }
 
         .points-pill {
-            display: inline-block;
-            background: #e8f5e8;
-            color: #3a7a3a;
-            font-size: 12px;
-            font-weight: 500;
-            padding: 3px 10px;
-            border-radius: 20px;
+            display: inline-block; background: #e8f5e8; color: #3a7a3a;
+            font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 20px;
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 32px 0;
-            color: #b0a090;
-            font-size: 13px;
+        .actions-cell { display: flex; gap: 6px; justify-content: flex-end; }
+
+        .btn-edit {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 12px; background: #eee8ff; color: #6b45b8;
+            border: none; border-radius: 8px; font-size: 12px; font-weight: 500;
+            font-family: inherit; cursor: pointer; text-decoration: none;
+            transition: background 0.15s;
         }
+        .btn-edit:hover { background: #ddd0ff; }
+        .btn-edit svg { width: 12px; height: 12px; fill: none; stroke: #6b45b8; stroke-width: 2; }
+
+        .btn-delete {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 12px; background: #ffecec; color: #c0392b;
+            border: none; border-radius: 8px; font-size: 12px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: background 0.15s;
+        }
+        .btn-delete:hover { background: #ffd5d5; }
+        .btn-delete svg { width: 12px; height: 12px; fill: none; stroke: #c0392b; stroke-width: 2; }
+
+        .empty-state {
+            text-align: center; padding: 32px 0;
+            color: #b0a090; font-size: 13px;
+        }
+
+        /* Modal overlay */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.35); z-index: 100;
+            align-items: center; justify-content: center;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #faf9f7; border-radius: 18px;
+            padding: 28px; width: 90%; max-width: 360px;
+            border: 1px solid #e2ddd6;
+        }
+        .modal-title { font-size: 15px; font-weight: 600; color: #2d2620; margin-bottom: 8px; }
+        .modal-text { font-size: 13px; color: #7a6a5a; margin-bottom: 24px; }
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+        .btn-confirm-delete {
+            padding: 9px 18px; background: #c0392b; color: #fff;
+            border: none; border-radius: 9px; font-size: 13px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: background 0.15s;
+        }
+        .btn-confirm-delete:hover { background: #a93226; }
     </style>
 </head>
 <body>
@@ -219,17 +193,35 @@
         </a>
         <div>
             <div class="page-title">Gestion des Auteurs</div>
-            <div class="page-subtitle">Ajouter et consulter les auteurs</div>
+            <div class="page-subtitle">Ajouter, modifier et supprimer les auteurs</div>
         </div>
     </div>
 
-    <!-- Formulaire -->
-    <div class="card">
+    <!-- Formulaire modifier (visible seulement si auteurEdit présent) -->
+    <div class="edit-card" th:if="${auteurEdit != null}">
+        <p class="card-label">✏️ Modifier l'auteur</p>
+        <form th:action="@{'/auteur/modifier/' + ${auteurEdit.id}}" method="post">
+            <div class="field-group">
+                <label>Nom et prénom</label>
+                <input type="text" name="nomPrenom" th:value="${auteurEdit.nomPrenom}" placeholder="Nom et prénom" required />
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <svg viewBox="0 0 24 24"><path d="M17 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V7l-4-4zm-5 16a3 3 0 110-6 3 3 0 010 6zm3-10H5V5h10v4z"/></svg>
+                    Enregistrer
+                </button>
+                <a th:href="@{/auteur}" href="/auteur" class="btn-cancel">Annuler</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Formulaire ajouter -->
+    <div class="card" th:if="${auteurEdit == null}">
         <p class="card-label">Nouvel auteur</p>
-        <form th:action="@{/auteur/ajouter}" th:object="${auteur}" method="post" action="/auteur/ajouter">
+        <form th:action="@{/auteur/ajouter}" th:object="${auteur}" method="post">
             <div class="field-group">
                 <label for="nomPrenom">Nom et prénom</label>
-                <input type="text" id="nomPrenom" th:field="*{nomPrenom}" name="nomPrenom" placeholder="Ex : Victor Hugo" />
+                <input type="text" id="nomPrenom" th:field="*{nomPrenom}" placeholder="Ex : Victor Hugo" required />
             </div>
             <button type="submit" class="btn-submit">
                 <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
@@ -238,19 +230,19 @@
         </form>
     </div>
 
-    <!-- Tableau des auteurs-->
+    <!-- Tableau des auteurs -->
     <div class="card">
         <div class="section-head">
             <span class="section-title">Liste des auteurs</span>
             <span class="count-badge" th:text="${#lists.size(auteurs)} + ' auteurs'">0 auteurs</span>
         </div>
-
         <table>
             <thead>
             <tr>
                 <th style="width:50px">ID</th>
                 <th>Nom et prénom</th>
                 <th style="text-align:right">Points</th>
+                <th style="text-align:right; width:160px">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -265,14 +257,54 @@
                 <td style="text-align:right">
                     <span class="points-pill" th:text="${a.nbrePoints} + ' pts'">0 pts</span>
                 </td>
+                <td>
+                    <div class="actions-cell">
+                        <a th:href="@{'/auteur/modifier/' + ${a.id}}" class="btn-edit">
+                            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                            Modifier
+                        </a>
+                        <button type="button" class="btn-delete"
+                                th:attr="onclick='openDeleteModal(' + ${a.id} + ', \'' + ${a.nomPrenom} + '\')'">
+                            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                            Supprimer
+                        </button>
+                    </div>
+                </td>
             </tr>
             <tr th:if="${#lists.isEmpty(auteurs)}">
-                <td colspan="3" class="empty-state">Aucun auteur enregistré</td>
+                <td colspan="4" class="empty-state">Aucun auteur enregistré</td>
             </tr>
             </tbody>
         </table>
     </div>
-
 </div>
+
+<!-- Modal confirmation suppression -->
+<div class="modal-overlay" id="deleteModal">
+    <div class="modal">
+        <div class="modal-title">Confirmer la suppression</div>
+        <p class="modal-text" id="deleteModalText">Voulez-vous vraiment supprimer cet auteur ?</p>
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeDeleteModal()">Annuler</button>
+            <form id="deleteForm" method="post">
+                <button type="submit" class="btn-confirm-delete">Supprimer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openDeleteModal(id, nom) {
+        document.getElementById('deleteModalText').textContent = 'Voulez-vous vraiment supprimer "' + nom + '" ?';
+        document.getElementById('deleteForm').action = '/auteur/supprimer/' + id;
+        document.getElementById('deleteModal').classList.add('active');
+    }
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').classList.remove('active');
+    }
+    document.getElementById('deleteModal').addEventListener('click', function(e) {
+        if (e.target === this) closeDeleteModal();
+    });
+</script>
 </body>
 </html>

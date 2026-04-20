@@ -1,6 +1,5 @@
 package com.tp2.appWeb.controller;
 
-
 import com.tp2.appWeb.model.Auteur;
 import com.tp2.appWeb.model.Livre;
 import com.tp2.appWeb.repository.AuteurRepository;
@@ -20,7 +19,6 @@ public class LivreController {
     @Autowired
     private AuteurRepository auteurRepo;
 
-    // gestion des livres
     @GetMapping
     public String afficher(Model model) {
         model.addAttribute("livres", livreRepo.findAll());
@@ -34,7 +32,34 @@ public class LivreController {
         return "redirect:/livre";
     }
 
-    //affectation livre a son auteur
+    @GetMapping("/modifier/{isbn}")
+    public String afficherModifier(@PathVariable String isbn, Model model) {
+        Livre livre = livreRepo.findById(isbn).orElse(null);
+        if (livre == null) return "redirect:/livre";
+        model.addAttribute("livres", livreRepo.findAll());
+        model.addAttribute("livre", new Livre());
+        model.addAttribute("livreEdit", livre);
+        return "livres";
+    }
+
+    @PostMapping("/modifier/{isbn}")
+    public String modifier(@PathVariable String isbn, @ModelAttribute Livre livre) {
+        Livre existing = livreRepo.findById(isbn).orElse(null);
+        if (existing != null) {
+            existing.setTitre(livre.getTitre());
+            existing.setAnneeParution(livre.getAnneeParution());
+            livreRepo.save(existing);
+        }
+        return "redirect:/livre";
+    }
+
+    @PostMapping("/supprimer/{isbn}")
+    public String supprimer(@PathVariable String isbn) {
+        livreRepo.deleteById(isbn);
+        return "redirect:/livre";
+    }
+
+    // Affectation livre à son auteur
     @GetMapping("/affecterAuteur")
     public String afficherAffectation(Model model) {
         model.addAttribute("livres", livreRepo.findAll());
@@ -49,10 +74,26 @@ public class LivreController {
         Auteur auteur = auteurRepo.findById(auteurId).orElse(null);
 
         if (livre != null && auteur != null) {
-            // Eviter les doublons
             if (!livre.getAuteurs().contains(auteur)) {
                 livre.getAuteurs().add(auteur);
-                auteur.setNbrePoints(auteur.getNbrePoints() + 10); // +10 points
+                auteur.setNbrePoints(auteur.getNbrePoints() + 10);
+                livreRepo.save(livre);
+                auteurRepo.save(auteur);
+            }
+        }
+        return "redirect:/livre/affecterAuteur";
+    }
+
+    @PostMapping("/retirerAuteur")
+    public String retirerAuteur(@RequestParam String isbn,
+                                @RequestParam Long auteurId) {
+        Livre livre = livreRepo.findById(isbn).orElse(null);
+        Auteur auteur = auteurRepo.findById(auteurId).orElse(null);
+
+        if (livre != null && auteur != null) {
+            boolean removed = livre.getAuteurs().removeIf(a -> a.getId().equals(auteurId));
+            if (removed) {
+                auteur.setNbrePoints(Math.max(0, auteur.getNbrePoints() - 10));
                 livreRepo.save(livre);
                 auteurRepo.save(auteur);
             }

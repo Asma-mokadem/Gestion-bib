@@ -10,227 +10,133 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: #f0ede8;
-            min-height: 100vh;
-            padding: 36px 20px;
+            background: #f0ede8; min-height: 100vh; padding: 36px 20px;
         }
 
-        .page { max-width: 680px; margin: auto; }
+        .page { max-width: 720px; margin: auto; }
 
-        .topbar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
-        }
+        .topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
 
         .back-btn {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            background: #faf9f7;
-            border: 1px solid #e2ddd6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            flex-shrink: 0;
+            width: 34px; height: 34px; border-radius: 10px;
+            background: #faf9f7; border: 1px solid #e2ddd6;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; flex-shrink: 0;
         }
-
         .back-btn svg { width: 16px; height: 16px; fill: none; stroke: #7a6a5a; stroke-width: 2; }
 
         .page-title { font-size: 20px; font-weight: 600; color: #2d2620; letter-spacing: -0.3px; }
         .page-subtitle { font-size: 13px; color: #9a8a78; margin-top: 1px; }
 
         .card {
-            background: #faf9f7;
-            border-radius: 18px;
-            border: 1px solid #e2ddd6;
-            padding: 24px;
-            margin-bottom: 16px;
+            background: #faf9f7; border-radius: 18px;
+            border: 1px solid #e2ddd6; padding: 24px; margin-bottom: 16px;
         }
-
         .card-label {
-            font-size: 11px;
-            font-weight: 500;
-            color: #b0a090;
-            letter-spacing: 0.7px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
+            font-size: 11px; font-weight: 500; color: #b0a090;
+            letter-spacing: 0.7px; text-transform: uppercase; margin-bottom: 16px;
         }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
         @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; } }
 
-        label {
-            display: block;
-            font-size: 12px;
-            font-weight: 500;
-            color: #7a6a5a;
-            margin-bottom: 7px;
-        }
+        label { display: block; font-size: 12px; font-weight: 500; color: #7a6a5a; margin-bottom: 7px; }
 
         select {
-            width: 100%;
-            padding: 11px 14px;
-            background: #f5f2ee;
-            border: 1px solid #e2ddd6;
-            border-radius: 10px;
-            font-size: 13px;
-            color: #2d2620;
-            font-family: inherit;
-            appearance: none;
+            width: 100%; padding: 11px 14px;
+            background: #f5f2ee; border: 1px solid #e2ddd6;
+            border-radius: 10px; font-size: 13px; color: #2d2620;
+            font-family: inherit; appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9' fill='none' stroke='%23a08060' stroke-width='2'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            cursor: pointer;
-            transition: border-color 0.18s, background 0.18s;
+            background-repeat: no-repeat; background-position: right 14px center;
+            cursor: pointer; transition: border-color 0.18s, background 0.18s;
         }
-
-        select:focus {
-            outline: none;
-            border-color: #a08060;
-            background-color: #faf9f7;
-        }
+        select:focus { outline: none; border-color: #a08060; background-color: #faf9f7; }
 
         .btn-submit {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 11px 22px;
-            background: #5a4535;
-            color: #f5f0ea;
-            border: none;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 500;
-            font-family: inherit;
-            cursor: pointer;
-            transition: background 0.18s;
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 22px; background: #5a4535; color: #f5f0ea;
+            border: none; border-radius: 10px; font-size: 13px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: background 0.18s;
         }
-
         .btn-submit:hover { background: #3d2e22; }
         .btn-submit svg { width: 14px; height: 14px; fill: #f5f0ea; }
 
-        .section-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
+        .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
         .section-title { font-size: 13px; font-weight: 500; color: #5a4535; }
+        .count-badge { font-size: 11px; font-weight: 500; color: #9a8a78; background: #ede8e0; padding: 3px 9px; border-radius: 20px; }
 
-        .count-badge {
-            font-size: 11px;
-            font-weight: 500;
-            color: #9a8a78;
-            background: #ede8e0;
-            padding: 3px 9px;
-            border-radius: 20px;
+        /* Livres avec auteurs */
+        .livre-row {
+            border-bottom: 1px solid #f0ece6; padding: 14px 0;
+        }
+        .livre-row:last-child { border-bottom: none; }
+
+        .livre-header {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+        }
+        .book-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: #d8eef0; display: flex; align-items: center;
+            justify-content: center; flex-shrink: 0;
+        }
+        .book-icon svg { width: 15px; height: 15px; fill: #3d8f96; }
+
+        .livre-title { font-size: 13px; font-weight: 500; color: #2d2620; }
+        .livre-isbn { font-size: 11px; color: #b0a090; font-family: monospace; margin-top: 1px; }
+
+        .auteurs-list { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 42px; }
+
+        .auteur-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: #fce8d8; border-radius: 20px;
+            padding: 4px 8px 4px 10px; font-size: 12px; color: #6b3d1a;
         }
 
+        .btn-chip-remove {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+            padding: 0; transition: background 0.15s;
+        }
+        .btn-chip-remove:hover { background: rgba(192,57,43,0.18); }
+        .btn-chip-remove svg { width: 10px; height: 10px; fill: none; stroke: #8b4513; stroke-width: 2.5; }
+
+        .no-auteurs { font-size: 12px; color: #c0b4a4; padding-left: 42px; font-style: italic; }
+
+        /* Classement */
         table { width: 100%; border-collapse: collapse; }
-
         thead tr { border-bottom: 1px solid #e2ddd6; }
-
         th {
-            text-align: left;
-            font-size: 11px;
-            font-weight: 500;
-            color: #b0a090;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            padding: 0 12px 12px;
+            text-align: left; font-size: 11px; font-weight: 500; color: #b0a090;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 0 12px 12px;
         }
-
         th:first-child { padding-left: 0; }
-
-        tbody tr {
-            border-bottom: 1px solid #f0ece6;
-            transition: background 0.15s;
-        }
-
+        tbody tr { border-bottom: 1px solid #f0ece6; transition: background 0.15s; }
         tbody tr:last-child { border-bottom: none; }
         tbody tr:hover { background: #f5f2ee; }
-
-        td {
-            padding: 13px 12px;
-            font-size: 13px;
-            color: #3d3028;
-        }
-
+        td { padding: 13px 12px; font-size: 13px; color: #3d3028; }
         td:first-child { padding-left: 0; }
 
         .id-cell { font-size: 12px; color: #b0a090; width: 50px; }
-
         .avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #fce8d8;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-            color: #c86833;
-            margin-right: 10px;
-            flex-shrink: 0;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: #fce8d8; display: inline-flex; align-items: center;
+            justify-content: center; font-size: 11px; font-weight: 600;
+            color: #c86833; margin-right: 10px; flex-shrink: 0;
         }
-
         .name-cell { display: flex; align-items: center; }
 
-        .points-bar-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .points-bar-wrap { display: flex; align-items: center; gap: 10px; }
+        .points-bar { flex: 1; height: 5px; background: #ede8e0; border-radius: 99px; overflow: hidden; min-width: 60px; }
+        .points-fill { height: 100%; background: #c86833; border-radius: 99px; transition: width 0.4s; }
+        .points-val { font-size: 12px; font-weight: 500; color: #7a6a5a; min-width: 40px; text-align: right; }
 
-        .points-bar {
-            flex: 1;
-            height: 5px;
-            background: #ede8e0;
-            border-radius: 99px;
-            overflow: hidden;
-            min-width: 60px;
-        }
-
-        .points-fill {
-            height: 100%;
-            background: #c86833;
-            border-radius: 99px;
-            transition: width 0.4s;
-        }
-
-        .points-val {
-            font-size: 12px;
-            font-weight: 500;
-            color: #7a6a5a;
-            min-width: 40px;
-            text-align: right;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 32px 0;
-            color: #b0a090;
-            font-size: 13px;
-        }
+        .empty-state { text-align: center; padding: 32px 0; color: #b0a090; font-size: 13px; }
 
         .info-note {
-            font-size: 12px;
-            color: #9a8a78;
-            background: #f5f2ee;
-            border-radius: 8px;
-            padding: 10px 14px;
-            margin-top: 16px;
+            font-size: 12px; color: #9a8a78; background: #f5f2ee;
+            border-radius: 8px; padding: 10px 14px; margin-top: 16px;
             border-left: 3px solid #d4c5b0;
         }
     </style>
@@ -244,7 +150,7 @@
         </a>
         <div>
             <div class="page-title">Affectation des Auteurs</div>
-            <div class="page-subtitle">Lier un auteur à un livre</div>
+            <div class="page-subtitle">Lier ou retirer un auteur d'un livre</div>
         </div>
     </div>
 
@@ -274,8 +180,44 @@
             </button>
         </form>
         <div class="info-note">
-            Chaque nouvelle affectation ajoute <strong>+10 points</strong> à l'auteur sélectionné.
+            Chaque nouvelle affectation ajoute <strong>+10 points</strong> à l'auteur. Retirer un auteur enlève <strong>-10 points</strong>.
         </div>
+    </div>
+
+    <!-- Livres avec leurs auteurs (retrait possible) -->
+    <div class="card">
+        <div class="section-head">
+            <span class="section-title">Affectations actuelles</span>
+            <span class="count-badge" th:text="${#lists.size(livres)} + ' livres'">0 livres</span>
+        </div>
+
+        <div th:each="l : ${livres}" class="livre-row">
+            <div class="livre-header">
+                <div class="book-icon">
+                    <svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v16h12V4H6zm2 3h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+                </div>
+                <div>
+                    <div class="livre-title" th:text="${l.titre}">Titre</div>
+                    <div class="livre-isbn" th:text="${l.isbn}">isbn</div>
+                </div>
+            </div>
+
+            <div class="auteurs-list" th:if="${not #lists.isEmpty(l.auteurs)}">
+                <span th:each="a : ${l.auteurs}" class="auteur-chip">
+                    <span th:text="${a.nomPrenom}">Auteur</span>
+                    <form th:action="@{/livre/retirerAuteur}" method="post" style="display:inline">
+                        <input type="hidden" name="isbn" th:value="${l.isbn}" />
+                        <input type="hidden" name="auteurId" th:value="${a.id}" />
+                        <button type="submit" class="btn-chip-remove" title="Retirer cet auteur">
+                            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                    </form>
+                </span>
+            </div>
+            <div class="no-auteurs" th:if="${#lists.isEmpty(l.auteurs)}">Aucun auteur affecté</div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(livres)}" class="empty-state">Aucun livre enregistré</div>
     </div>
 
     <!-- Classement auteurs -->
@@ -284,7 +226,6 @@
             <span class="section-title">Classement des auteurs</span>
             <span class="count-badge" th:text="${#lists.size(auteurs)} + ' auteurs'">0 auteurs</span>
         </div>
-
         <table>
             <thead>
             <tr>

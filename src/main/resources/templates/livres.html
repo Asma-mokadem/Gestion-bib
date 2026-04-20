@@ -10,211 +10,152 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: #f0ede8;
-            min-height: 100vh;
-            padding: 36px 20px;
+            background: #f0ede8; min-height: 100vh; padding: 36px 20px;
         }
 
-        .page {
-            max-width: 680px;
-            margin: auto;
-        }
+        .page { max-width: 760px; margin: auto; }
 
         .topbar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
+            display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
         }
-
         .back-btn {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            background: #faf9f7;
-            border: 1px solid #e2ddd6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            flex-shrink: 0;
+            width: 34px; height: 34px; border-radius: 10px;
+            background: #faf9f7; border: 1px solid #e2ddd6;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; flex-shrink: 0;
         }
-
         .back-btn svg { width: 16px; height: 16px; fill: none; stroke: #7a6a5a; stroke-width: 2; }
 
         .page-title { font-size: 20px; font-weight: 600; color: #2d2620; letter-spacing: -0.3px; }
         .page-subtitle { font-size: 13px; color: #9a8a78; margin-top: 1px; }
 
         .card {
-            background: #faf9f7;
-            border-radius: 18px;
-            border: 1px solid #e2ddd6;
-            padding: 24px;
-            margin-bottom: 16px;
+            background: #faf9f7; border-radius: 18px;
+            border: 1px solid #e2ddd6; padding: 24px; margin-bottom: 16px;
         }
-
         .card-label {
-            font-size: 11px;
-            font-weight: 500;
-            color: #b0a090;
-            letter-spacing: 0.7px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
+            font-size: 11px; font-weight: 500; color: #b0a090;
+            letter-spacing: 0.7px; text-transform: uppercase; margin-bottom: 16px;
         }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
+        .edit-card {
+            background: #fff8f0; border: 1px solid #f0d8bc;
+            border-radius: 18px; padding: 24px; margin-bottom: 16px;
         }
+        .edit-card .card-label { color: #c86833; }
 
-        @media (max-width: 520px) {
-            .grid-3 { grid-template-columns: 1fr; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        @media (max-width: 520px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+        label { display: block; font-size: 12px; font-weight: 500; color: #7a6a5a; margin-bottom: 7px; }
+
+        input[type="text"], input[type="number"] {
+            width: 100%; padding: 11px 14px;
+            background: #f5f2ee; border: 1px solid #e2ddd6;
+            border-radius: 10px; font-size: 14px; color: #2d2620;
+            font-family: inherit; transition: border-color 0.18s, background 0.18s;
         }
-
-        label {
-            display: block;
-            font-size: 12px;
-            font-weight: 500;
-            color: #7a6a5a;
-            margin-bottom: 7px;
+        input[type="text"]:focus, input[type="number"]:focus {
+            outline: none; border-color: #a08060; background: #faf9f7;
         }
-
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 11px 14px;
-            background: #f5f2ee;
-            border: 1px solid #e2ddd6;
-            border-radius: 10px;
-            font-size: 14px;
-            color: #2d2620;
-            font-family: inherit;
-            transition: border-color 0.18s, background 0.18s;
-        }
-
-        input[type="text"]:focus,
-        input[type="number"]:focus {
-            outline: none;
-            border-color: #a08060;
-            background: #faf9f7;
-        }
-
         input::placeholder { color: #c0b4a4; }
-
-        /* Remove number input arrows */
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button { opacity: 0.4; }
 
-        .btn-submit {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 11px 22px;
-            background: #5a4535;
-            color: #f5f0ea;
-            border: none;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 500;
-            font-family: inherit;
-            cursor: pointer;
-            transition: background 0.18s;
-        }
+        .form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
+        .btn-submit {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 22px; background: #5a4535; color: #f5f0ea;
+            border: none; border-radius: 10px; font-size: 13px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: background 0.18s;
+        }
         .btn-submit:hover { background: #3d2e22; }
         .btn-submit svg { width: 14px; height: 14px; fill: #f5f0ea; }
 
-        .section-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
+        .btn-cancel {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 18px; background: transparent; color: #9a8a78;
+            border: 1px solid #e2ddd6; border-radius: 10px; font-size: 13px;
+            font-weight: 500; font-family: inherit; cursor: pointer;
+            text-decoration: none; transition: background 0.18s;
         }
+        .btn-cancel:hover { background: #ede8e0; }
 
+        .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
         .section-title { font-size: 13px; font-weight: 500; color: #5a4535; }
-
-        .count-badge {
-            font-size: 11px;
-            font-weight: 500;
-            color: #9a8a78;
-            background: #ede8e0;
-            padding: 3px 9px;
-            border-radius: 20px;
-        }
+        .count-badge { font-size: 11px; font-weight: 500; color: #9a8a78; background: #ede8e0; padding: 3px 9px; border-radius: 20px; }
 
         table { width: 100%; border-collapse: collapse; }
-
         thead tr { border-bottom: 1px solid #e2ddd6; }
-
         th {
-            text-align: left;
-            font-size: 11px;
-            font-weight: 500;
-            color: #b0a090;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            padding: 0 12px 12px;
+            text-align: left; font-size: 11px; font-weight: 500; color: #b0a090;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 0 12px 12px;
         }
-
         th:first-child { padding-left: 0; }
-
-        tbody tr {
-            border-bottom: 1px solid #f0ece6;
-            transition: background 0.15s;
-        }
-
+        tbody tr { border-bottom: 1px solid #f0ece6; transition: background 0.15s; }
         tbody tr:last-child { border-bottom: none; }
         tbody tr:hover { background: #f5f2ee; }
-
-        td {
-            padding: 13px 12px;
-            font-size: 13px;
-            color: #3d3028;
-        }
-
+        td { padding: 12px 12px; font-size: 13px; color: #3d3028; }
         td:first-child { padding-left: 0; }
 
-        .isbn-cell {
-            font-size: 11px;
-            color: #b0a090;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 0.3px;
-        }
+        .isbn-cell { font-size: 11px; color: #b0a090; font-family: 'Courier New', monospace; }
 
         .book-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            background: #d8eef0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            flex-shrink: 0;
+            width: 30px; height: 30px; border-radius: 8px;
+            background: #d8eef0; display: inline-flex; align-items: center;
+            justify-content: center; margin-right: 10px; flex-shrink: 0;
         }
-
         .book-icon svg { width: 14px; height: 14px; fill: #3d8f96; }
-
         .title-cell { display: flex; align-items: center; }
 
         .year-pill {
-            display: inline-block;
-            background: #fce8d8;
-            color: #c86833;
-            font-size: 12px;
-            font-weight: 500;
-            padding: 3px 10px;
-            border-radius: 20px;
+            display: inline-block; background: #fce8d8; color: #c86833;
+            font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 20px;
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 32px 0;
-            color: #b0a090;
-            font-size: 13px;
+        .actions-cell { display: flex; gap: 6px; justify-content: flex-end; }
+
+        .btn-edit {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 12px; background: #eee8ff; color: #6b45b8;
+            border: none; border-radius: 8px; font-size: 12px; font-weight: 500;
+            font-family: inherit; cursor: pointer; text-decoration: none;
+            transition: background 0.15s;
         }
+        .btn-edit:hover { background: #ddd0ff; }
+        .btn-edit svg { width: 12px; height: 12px; fill: none; stroke: #6b45b8; stroke-width: 2; }
+
+        .btn-delete {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 6px 12px; background: #ffecec; color: #c0392b;
+            border: none; border-radius: 8px; font-size: 12px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: background 0.15s;
+        }
+        .btn-delete:hover { background: #ffd5d5; }
+        .btn-delete svg { width: 12px; height: 12px; fill: none; stroke: #c0392b; stroke-width: 2; }
+
+        .empty-state { text-align: center; padding: 32px 0; color: #b0a090; font-size: 13px; }
+
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.35); z-index: 100;
+            align-items: center; justify-content: center;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #faf9f7; border-radius: 18px; padding: 28px;
+            width: 90%; max-width: 360px; border: 1px solid #e2ddd6;
+        }
+        .modal-title { font-size: 15px; font-weight: 600; color: #2d2620; margin-bottom: 8px; }
+        .modal-text { font-size: 13px; color: #7a6a5a; margin-bottom: 24px; }
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+        .btn-confirm-delete {
+            padding: 9px 18px; background: #c0392b; color: #fff;
+            border: none; border-radius: 9px; font-size: 13px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: background 0.15s;
+        }
+        .btn-confirm-delete:hover { background: #a93226; }
     </style>
 </head>
 <body>
@@ -226,26 +167,50 @@
         </a>
         <div>
             <div class="page-title">Gestion des Livres</div>
-            <div class="page-subtitle">Ajouter et consulter les livres</div>
+            <div class="page-subtitle">Ajouter, modifier et supprimer les livres</div>
         </div>
     </div>
 
-    <!-- Formulaire -->
-    <div class="card">
+    <!-- Formulaire modifier -->
+    <div class="edit-card" th:if="${livreEdit != null}">
+        <p class="card-label">✏️ Modifier le livre</p>
+        <form th:action="@{'/livre/modifier/' + ${livreEdit.isbn}}" method="post">
+            <div class="grid-2">
+                <div>
+                    <label>Titre</label>
+                    <input type="text" name="titre" th:value="${livreEdit.titre}" placeholder="Titre du livre" required />
+                </div>
+                <div>
+                    <label>Année de parution</label>
+                    <input type="number" name="anneeParution" th:value="${livreEdit.anneeParution}" placeholder="2024" required />
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <svg viewBox="0 0 24 24"><path d="M17 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V7l-4-4zm-5 16a3 3 0 110-6 3 3 0 010 6zm3-10H5V5h10v4z"/></svg>
+                    Enregistrer
+                </button>
+                <a th:href="@{/livre}" href="/livre" class="btn-cancel">Annuler</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Formulaire ajouter -->
+    <div class="card" th:if="${livreEdit == null}">
         <p class="card-label">Nouveau livre</p>
-        <form th:action="@{/livre/ajouter}" th:object="${livre}" method="post" action="/livre/ajouter">
+        <form th:action="@{/livre/ajouter}" th:object="${livre}" method="post">
             <div class="grid-3">
                 <div>
                     <label for="isbn">ISBN</label>
-                    <input type="text" id="isbn" th:field="*{isbn}" name="isbn" placeholder="978-..." />
+                    <input type="text" id="isbn" th:field="*{isbn}" placeholder="978-..." required />
                 </div>
                 <div>
                     <label for="titre">Titre</label>
-                    <input type="text" id="titre" th:field="*{titre}" name="titre" placeholder="Titre du livre" />
+                    <input type="text" id="titre" th:field="*{titre}" placeholder="Titre du livre" required />
                 </div>
                 <div>
                     <label for="anneeParution">Année de parution</label>
-                    <input type="number" id="anneeParution" th:field="*{anneeParution}" name="anneeParution" placeholder="2024" />
+                    <input type="number" id="anneeParution" th:field="*{anneeParution}" placeholder="2024" required />
                 </div>
             </div>
             <button type="submit" class="btn-submit">
@@ -261,13 +226,13 @@
             <span class="section-title">Liste des livres</span>
             <span class="count-badge" th:text="${#lists.size(livres)} + ' livres'">0 livres</span>
         </div>
-
         <table>
             <thead>
             <tr>
-                <th style="width: 140px;">ISBN</th>
+                <th style="width:130px">ISBN</th>
                 <th>Titre</th>
-                <th style="text-align: right;">Année</th>
+                <th style="text-align:right">Année</th>
+                <th style="text-align:right; width:160px">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -281,17 +246,57 @@
                         <span th:text="${l.titre}">Titre</span>
                     </div>
                 </td>
-                <td style="text-align: right;">
+                <td style="text-align:right">
                     <span class="year-pill" th:text="${l.anneeParution}">2024</span>
+                </td>
+                <td>
+                    <div class="actions-cell">
+                        <a th:href="@{'/livre/modifier/' + ${l.isbn}}" class="btn-edit">
+                            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                            Modifier
+                        </a>
+                        <button type="button" class="btn-delete"
+                                th:attr="onclick='openDeleteModal(\'' + ${l.isbn} + '\', \'' + ${l.titre} + '\')'">
+                            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                            Supprimer
+                        </button>
+                    </div>
                 </td>
             </tr>
             <tr th:if="${#lists.isEmpty(livres)}">
-                <td colspan="3" class="empty-state">Aucun livre enregistré</td>
+                <td colspan="4" class="empty-state">Aucun livre enregistré</td>
             </tr>
             </tbody>
         </table>
     </div>
-
 </div>
+
+<!-- Modal confirmation suppression -->
+<div class="modal-overlay" id="deleteModal">
+    <div class="modal">
+        <div class="modal-title">Confirmer la suppression</div>
+        <p class="modal-text" id="deleteModalText">Voulez-vous vraiment supprimer ce livre ?</p>
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeDeleteModal()">Annuler</button>
+            <form id="deleteForm" method="post">
+                <button type="submit" class="btn-confirm-delete">Supprimer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openDeleteModal(isbn, titre) {
+        document.getElementById('deleteModalText').textContent = 'Voulez-vous vraiment supprimer "' + titre + '" ?';
+        document.getElementById('deleteForm').action = '/livre/supprimer/' + isbn;
+        document.getElementById('deleteModal').classList.add('active');
+    }
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').classList.remove('active');
+    }
+    document.getElementById('deleteModal').addEventListener('click', function(e) {
+        if (e.target === this) closeDeleteModal();
+    });
+</script>
 </body>
 </html>
