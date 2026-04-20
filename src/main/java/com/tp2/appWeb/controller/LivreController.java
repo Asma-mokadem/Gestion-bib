@@ -20,7 +20,7 @@ public class LivreController {
     @Autowired
     private AuteurRepository auteurRepo;
 
-    // --- Gestion des Livres ---
+    // gestion des livres
     @GetMapping
     public String afficher(Model model) {
         model.addAttribute("livres", livreRepo.findAll());
@@ -34,7 +34,7 @@ public class LivreController {
         return "redirect:/livre";
     }
 
-    // --- Affectation Auteur ↔ Livre ---
+    //affectation livre a son auteur
     @GetMapping("/affecterAuteur")
     public String afficherAffectation(Model model) {
         model.addAttribute("livres", livreRepo.findAll());

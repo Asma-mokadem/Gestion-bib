@@ -21,7 +21,6 @@ public class Livre {
     )
     private List<Auteur> auteurs = new ArrayList<>();
 
-    // Getters & Setters
     public String getIsbn() { return isbn; }
     public void setIsbn(String isbn) { this.isbn = isbn; }
 

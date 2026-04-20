@@ -18,7 +18,6 @@ public class Auteur {
     @ManyToMany(mappedBy = "auteurs")
     private List<Livre> livres = new ArrayList<>();
 
-    // Getters & Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

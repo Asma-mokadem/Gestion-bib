@@ -8,6 +8,6 @@ public class MenuController {
 
     @GetMapping("/")
     public String menu() {
-        return "menu"; // → menu.html
+        return "menu"; // aller au menu.html
     }
 }
