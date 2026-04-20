@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* CARD */
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 420px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+            text-align: center;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        /* TITRES */
+        h1 {
+            color: #764ba2;
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: #777;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            font-weight: normal;
+        }
+
+        /* MENU BOX */
+        .menu-box {
+            background: #f3e8ff;
+            border-left: 5px solid #764ba2;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .menu-box p {
+            margin: 8px 0;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+        }
+
+        /* couleurs */
+        .btn-auteur { background: linear-gradient(135deg, #764ba2, #667eea); }
+        .btn-livre  { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+        .btn-affect { background: linear-gradient(135deg, #9333ea, #7c3aed); }
+
+        /* hover effet */
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(118,75,162,0.4);
+        }
+
+        /* animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>JavaEE 2025</h1>
+    <h2>Bonjour Mme Ghada</h2>
+
+    <div class="menu-box">
+        <p><strong>Menu : Gestion de la librairie VOTRE_NOM</strong></p>
+        <p>📖 Ajouter des livres</p>
+        <p>👤 Ajouter des auteurs</p>
+        <p>🔗 Affectation des auteurs aux livres</p>
+    </div>
+
+    <a th:href="@{/auteur}" class="btn btn-auteur">👤 Gérer les Auteurs</a>
+    <a th:href="@{/livre}" class="btn btn-livre">📖 Gérer les Livres</a>
+    <a th:href="@{/livre/affecterAuteur}" class="btn btn-affect">🔗 Affecter Auteurs</a>
+</div>
+
+</body>
+</html>
