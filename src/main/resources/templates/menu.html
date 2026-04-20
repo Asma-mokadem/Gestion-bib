@@ -2,122 +2,202 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Menu</title>
-
+    <title>Bibliothèque</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #f0ede8;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        /* CARD */
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            width: 420px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-            text-align: center;
-            animation: fadeIn 0.6s ease-in-out;
+            padding: 20px;
         }
 
-        /* TITRES */
-        h1 {
-            color: #764ba2;
-            font-size: 2.2em;
-            margin-bottom: 5px;
-        }
-
-        h2 {
-            color: #777;
-            font-size: 1.1em;
-            margin-bottom: 25px;
-            font-weight: normal;
-        }
-
-        /* MENU BOX */
-        .menu-box {
-            background: #f3e8ff;
-            border-left: 5px solid #764ba2;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .menu-box p {
-            margin: 8px 0;
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        /* BUTTONS */
-        .btn {
-            display: block;
+        .wrapper {
             width: 100%;
-            padding: 14px;
-            margin: 12px 0;
-            border: none;
+            max-width: 420px;
+        }
+
+        .card {
+            background: #faf9f7;
+            border-radius: 24px;
+            padding: 44px 40px 40px;
+            border: 1px solid #e8e3dc;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: #d4c5b0;
             border-radius: 12px;
-            font-size: 1em;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #6b5a45;
+        }
+
+        .logo-text h1 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #2d2620;
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #9a8a78;
+            font-weight: 400;
+            margin-top: 1px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e8e3dc;
+            margin: 0 0 28px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #b0a090;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 14px;
             text-decoration: none;
-            color: white;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            transition: all 0.25s ease;
+            color: #3d3028;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+            transition: background 0.18s, border-color 0.18s;
         }
 
-        /* couleurs */
-        .btn-auteur { background: linear-gradient(135deg, #764ba2, #667eea); }
-        .btn-livre  { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-        .btn-affect { background: linear-gradient(135deg, #9333ea, #7c3aed); }
+        .nav-item:last-child { margin-bottom: 0; }
 
-        /* hover effet */
-        .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(118,75,162,0.4);
+        .nav-item:hover {
+            background: #ede8e0;
+            border-color: #ddd5c8;
         }
 
-        /* animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .nav-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
+        .nav-icon svg { width: 17px; height: 17px; }
+
+        .icon-auteur { background: #e8dff5; }
+        .icon-auteur svg { fill: #7c5abf; }
+
+        .icon-livre { background: #d8eef0; }
+        .icon-livre svg { fill: #3d8f96; }
+
+        .icon-affect { background: #fce8d8; }
+        .icon-affect svg { fill: #c86833; }
+
+        .nav-info { flex: 1; }
+        .nav-title { font-size: 14px; font-weight: 500; color: #2d2620; }
+        .nav-sub { font-size: 12px; color: #9a8a78; margin-top: 1px; font-weight: 400; }
+
+        .nav-arrow {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: #c0b4a4;
+            stroke-width: 1.8;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 12px;
+            color: #b0a090;
+        }
     </style>
 </head>
-
 <body>
+<div class="wrapper">
+    <div class="card">
 
-<div class="container">
-    <h1>JavaEE 2025</h1>
-    <h2>Bonjour Mme Ghada</h2>
+        <div class="logo-area">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm0 4h10v2H4V8zm0 4h16v2H4v-2zm0 4h10v2H4v-2z"/></svg>
+            </div>
+            <div class="logo-text">
+                <h1>Bibliothèque</h1>
+                <p>Système de gestion — JavaEE 2025</p>
+            </div>
+        </div>
 
-    <div class="menu-box">
-        <p><strong>Menu : Gestion de la librairie VOTRE_NOM</strong></p>
-        <p>📖 Ajouter des livres</p>
-        <p>👤 Ajouter des auteurs</p>
-        <p>🔗 Affectation des auteurs aux livres</p>
+        <div class="divider"></div>
+
+        <p class="section-label">Navigation</p>
+
+        <a th:href="@{/auteur}" href="/auteur" class="nav-item">
+            <div class="nav-icon icon-auteur">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+            </div>
+            <div class="nav-info">
+                <div class="nav-title">Gérer les Auteurs</div>
+                <div class="nav-sub">Ajouter, consulter les auteurs</div>
+            </div>
+            <svg class="nav-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+
+        <a th:href="@{/livre}" href="/livre" class="nav-item">
+            <div class="nav-icon icon-livre">
+                <svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v16h12V4H6zm2 3h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+            </div>
+            <div class="nav-info">
+                <div class="nav-title">Gérer les Livres</div>
+                <div class="nav-sub">Ajouter, consulter les livres</div>
+            </div>
+            <svg class="nav-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+
+        <a th:href="@{/livre/affecterAuteur}" href="/livre/affecterAuteur" class="nav-item">
+            <div class="nav-icon icon-affect">
+                <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            </div>
+            <div class="nav-info">
+                <div class="nav-title">Affecter les Auteurs</div>
+                <div class="nav-sub">Lier un auteur à un livre</div>
+            </div>
+            <svg class="nav-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+
     </div>
-
-    <a th:href="@{/auteur}" class="btn btn-auteur">👤 Gérer les Auteurs</a>
-    <a th:href="@{/livre}" class="btn btn-livre">📖 Gérer les Livres</a>
-    <a th:href="@{/livre/affecterAuteur}" class="btn btn-affect">🔗 Affecter Auteurs</a>
+    <div class="footer">Mme Ghada &nbsp;·&nbsp; TP2 JavaEE</div>
 </div>
-
 </body>
 </html>

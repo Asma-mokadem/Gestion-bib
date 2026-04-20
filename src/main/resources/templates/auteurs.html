@@ -1,134 +1,278 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Auteurs</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Auteurs</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f5f0ff;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #f0ede8;
             min-height: 100vh;
-            padding: 30px;
+            padding: 36px 20px;
         }
 
-        .container {
-            max-width: 750px;
+        .page {
+            max-width: 680px;
             margin: auto;
         }
 
-        h2 {
-            color: #764ba2;
-            font-size: 2em;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #764ba2;
+        .topbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
         }
 
-        .form-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(118,75,162,0.15);
+        .back-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #faf9f7;
+            border: 1px solid #e2ddd6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            flex-shrink: 0;
         }
+
+        .back-btn svg { width: 16px; height: 16px; fill: none; stroke: #7a6a5a; stroke-width: 2; }
+
+        .page-title { font-size: 20px; font-weight: 600; color: #2d2620; letter-spacing: -0.3px; }
+        .page-subtitle { font-size: 13px; color: #9a8a78; margin-top: 1px; }
+
+        .card {
+            background: #faf9f7;
+            border-radius: 18px;
+            border: 1px solid #e2ddd6;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #b0a090;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .field-group { margin-bottom: 16px; }
+        .field-group:last-of-type { margin-bottom: 20px; }
 
         label {
             display: block;
-            color: #555;
-            margin-bottom: 6px;
-            font-weight: bold;
+            font-size: 12px;
+            font-weight: 500;
+            color: #7a6a5a;
+            margin-bottom: 7px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0d0f0;
-            border-radius: 8px;
-            font-size: 1em;
-            margin-bottom: 15px;
-            transition: border 0.3s;
+            padding: 11px 14px;
+            background: #f5f2ee;
+            border: 1px solid #e2ddd6;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #2d2620;
+            font-family: inherit;
+            transition: border-color 0.18s, background 0.18s;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #764ba2;
+            border-color: #a08060;
+            background: #faf9f7;
         }
+
+        input[type="text"]::placeholder { color: #c0b4a4; }
 
         .btn-submit {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 22px;
+            background: #5a4535;
+            color: #f5f0ea;
             border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 1em;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: inherit;
             cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s;
+            transition: background 0.18s;
         }
 
-        .btn-submit:hover { transform: translateY(-2px); }
+        .btn-submit:hover { background: #3d2e22; }
 
-        hr { border: none; border-top: 2px solid #e0d0f0; margin: 20px 0; }
+        .btn-submit svg { width: 14px; height: 14px; fill: #f5f0ea; }
 
-        h3 { color: #764ba2; margin-bottom: 15px; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(118,75,162,0.15);
+        .section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
         }
 
-        thead {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            color: white;
+        .section-title { font-size: 13px; font-weight: 500; color: #5a4535; }
+
+        .count-badge {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9a8a78;
+            background: #ede8e0;
+            padding: 3px 9px;
+            border-radius: 20px;
         }
 
-        th, td {
-            padding: 14px 18px;
+        table { width: 100%; border-collapse: collapse; }
+
+        thead tr {
+            border-bottom: 1px solid #e2ddd6;
+        }
+
+        th {
             text-align: left;
+            font-size: 11px;
+            font-weight: 500;
+            color: #b0a090;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0 12px 12px;
         }
 
-        tbody tr:nth-child(even) { background: #f9f4ff; }
-        tbody tr:hover { background: #ede9fe; }
+        th:first-child { padding-left: 0; }
 
-        .back-link {
+        tbody tr {
+            border-bottom: 1px solid #f0ece6;
+            transition: background 0.15s;
+        }
+
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: #f5f2ee; }
+
+        td {
+            padding: 13px 12px;
+            font-size: 13px;
+            color: #3d3028;
+        }
+
+        td:first-child { padding-left: 0; }
+
+        .id-cell {
+            font-size: 12px;
+            color: #b0a090;
+            font-weight: 400;
+            width: 50px;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e8dff5;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #7c5abf;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .name-cell {
+            display: flex;
+            align-items: center;
+        }
+
+        .points-pill {
             display: inline-block;
-            margin-top: 20px;
-            color: #764ba2;
-            text-decoration: none;
-            font-weight: bold;
+            background: #e8f5e8;
+            color: #3a7a3a;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 20px;
         }
 
-        .back-link:hover { text-decoration: underline; }
+        .empty-state {
+            text-align: center;
+            padding: 32px 0;
+            color: #b0a090;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
-<h2>Gestion des Auteurs</h2>
+<div class="page">
 
-<form th:action="@{/auteur/ajouter}" th:object="${auteur}" method="post">
-    <label>Nom et prénom :</label><br/>
-    <input type="text" th:field="*{nomPrenom}" /><br/><br/>
-    <button type="submit">Ajouter</button>
-</form>
+    <div class="topbar">
+        <a th:href="@{/}" href="/" class="back-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <div>
+            <div class="page-title">Gestion des Auteurs</div>
+            <div class="page-subtitle">Ajouter et consulter les auteurs</div>
+        </div>
+    </div>
 
-<hr/>
-<h3>Liste des Auteurs</h3>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Nom et Prénom</th>
-        <th>NbrePoints</th>
-    </tr>
-    <tr th:each="a : ${auteurs}">
-        <td th:text="${a.id}"></td>
-        <td th:text="${a.nomPrenom}"></td>
-        <td th:text="${a.nbrePoints}"></td>
-    </tr>
-</table>
+    <!-- Formulaire -->
+    <div class="card">
+        <p class="card-label">Nouvel auteur</p>
+        <form th:action="@{/auteur/ajouter}" th:object="${auteur}" method="post" action="/auteur/ajouter">
+            <div class="field-group">
+                <label for="nomPrenom">Nom et prénom</label>
+                <input type="text" id="nomPrenom" th:field="*{nomPrenom}" name="nomPrenom" placeholder="Ex : Victor Hugo" />
+            </div>
+            <button type="submit" class="btn-submit">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                Ajouter l'auteur
+            </button>
+        </form>
+    </div>
 
-<br/><a th:href="@{/}">← Retour au Menu</a>
+    <!-- Tableau -->
+    <div class="card">
+        <div class="section-head">
+            <span class="section-title">Liste des auteurs</span>
+            <span class="count-badge" th:text="${#lists.size(auteurs)} + ' auteurs'">0 auteurs</span>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th style="width:50px">ID</th>
+                <th>Nom et prénom</th>
+                <th style="text-align:right">Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="a : ${auteurs}">
+                <td class="id-cell" th:text="${a.id}">1</td>
+                <td>
+                    <div class="name-cell">
+                        <div class="avatar" th:text="${#strings.toUpperCase(#strings.substring(a.nomPrenom,0,1))}">A</div>
+                        <span th:text="${a.nomPrenom}">Nom Auteur</span>
+                    </div>
+                </td>
+                <td style="text-align:right">
+                    <span class="points-pill" th:text="${a.nbrePoints} + ' pts'">0 pts</span>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(auteurs)}">
+                <td colspan="3" class="empty-state">Aucun auteur enregistré</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
 </body>
 </html>

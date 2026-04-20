@@ -1,129 +1,297 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Livres</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Livres</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f5f0ff;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #f0ede8;
             min-height: 100vh;
-            padding: 30px;
+            padding: 36px 20px;
         }
 
-        .container { max-width: 750px; margin: auto; }
-
-        h2 {
-            color: #764ba2;
-            font-size: 2em;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #764ba2;
+        .page {
+            max-width: 680px;
+            margin: auto;
         }
 
-        .form-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(118,75,162,0.15);
+        .topbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .back-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #faf9f7;
+            border: 1px solid #e2ddd6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .back-btn svg { width: 16px; height: 16px; fill: none; stroke: #7a6a5a; stroke-width: 2; }
+
+        .page-title { font-size: 20px; font-weight: 600; color: #2d2620; letter-spacing: -0.3px; }
+        .page-subtitle { font-size: 13px; color: #9a8a78; margin-top: 1px; }
+
+        .card {
+            background: #faf9f7;
+            border-radius: 18px;
+            border: 1px solid #e2ddd6;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #b0a090;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 520px) {
+            .grid-3 { grid-template-columns: 1fr; }
         }
 
         label {
             display: block;
-            color: #555;
-            margin-bottom: 6px;
-            font-weight: bold;
+            font-size: 12px;
+            font-weight: 500;
+            color: #7a6a5a;
+            margin-bottom: 7px;
         }
 
-        input[type="text"], input[type="number"] {
+        input[type="text"],
+        input[type="number"] {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0d0f0;
-            border-radius: 8px;
-            font-size: 1em;
-            margin-bottom: 15px;
-            transition: border 0.3s;
+            padding: 11px 14px;
+            background: #f5f2ee;
+            border: 1px solid #e2ddd6;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #2d2620;
+            font-family: inherit;
+            transition: border-color 0.18s, background 0.18s;
         }
 
-        input:focus {
+        input[type="text"]:focus,
+        input[type="number"]:focus {
             outline: none;
-            border-color: #764ba2;
+            border-color: #a08060;
+            background: #faf9f7;
         }
+
+        input::placeholder { color: #c0b4a4; }
+
+        /* Remove number input arrows */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button { opacity: 0.4; }
 
         .btn-submit {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 22px;
+            background: #5a4535;
+            color: #f5f0ea;
             border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 1em;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: inherit;
             cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s;
+            transition: background 0.18s;
         }
 
-        .btn-submit:hover { transform: translateY(-2px); }
+        .btn-submit:hover { background: #3d2e22; }
+        .btn-submit svg { width: 14px; height: 14px; fill: #f5f0ea; }
 
-        hr { border: none; border-top: 2px solid #e0d0f0; margin: 20px 0; }
-        h3 { color: #764ba2; margin-bottom: 15px; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(118,75,162,0.15);
+        .section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
         }
 
-        thead {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            color: white;
+        .section-title { font-size: 13px; font-weight: 500; color: #5a4535; }
+
+        .count-badge {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9a8a78;
+            background: #ede8e0;
+            padding: 3px 9px;
+            border-radius: 20px;
         }
 
-        th, td { padding: 14px 18px; text-align: left; }
-        tbody tr:nth-child(even) { background: #f9f4ff; }
-        tbody tr:hover { background: #ede9fe; }
+        table { width: 100%; border-collapse: collapse; }
 
-        .back-link {
+        thead tr { border-bottom: 1px solid #e2ddd6; }
+
+        th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 500;
+            color: #b0a090;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0 12px 12px;
+        }
+
+        th:first-child { padding-left: 0; }
+
+        tbody tr {
+            border-bottom: 1px solid #f0ece6;
+            transition: background 0.15s;
+        }
+
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: #f5f2ee; }
+
+        td {
+            padding: 13px 12px;
+            font-size: 13px;
+            color: #3d3028;
+        }
+
+        td:first-child { padding-left: 0; }
+
+        .isbn-cell {
+            font-size: 11px;
+            color: #b0a090;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.3px;
+        }
+
+        .book-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: #d8eef0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .book-icon svg { width: 14px; height: 14px; fill: #3d8f96; }
+
+        .title-cell { display: flex; align-items: center; }
+
+        .year-pill {
             display: inline-block;
-            margin-top: 20px;
-            color: #764ba2;
-            text-decoration: none;
-            font-weight: bold;
+            background: #fce8d8;
+            color: #c86833;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 20px;
         }
 
-        .back-link:hover { text-decoration: underline; }
-    </style></head>
+        .empty-state {
+            text-align: center;
+            padding: 32px 0;
+            color: #b0a090;
+            font-size: 13px;
+        }
+    </style>
+</head>
 <body>
-<h2>Gestion des Livres</h2>
+<div class="page">
 
-<form th:action="@{/livre/ajouter}" th:object="${livre}" method="post">
-    <label>ISBN :</label><br/>
-    <input type="text" th:field="*{isbn}" /><br/><br/>
-    <label>Titre :</label><br/>
-    <input type="text" th:field="*{titre}" /><br/><br/>
-    <label>Année de parution :</label><br/>
-    <input type="number" th:field="*{anneeParution}" /><br/><br/>
-    <button type="submit">Ajouter</button>
-</form>
+    <div class="topbar">
+        <a th:href="@{/}" href="/" class="back-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <div>
+            <div class="page-title">Gestion des Livres</div>
+            <div class="page-subtitle">Ajouter et consulter les livres</div>
+        </div>
+    </div>
 
-<hr/>
-<h3>Liste des Livres</h3>
-<table border="1">
-    <tr>
-        <th>ISBN</th>
-        <th>Titre</th>
-        <th>Année de parution</th>
-    </tr>
-    <tr th:each="l : ${livres}">
-        <td th:text="${l.isbn}"></td>
-        <td th:text="${l.titre}"></td>
-        <td th:text="${l.anneeParution}"></td>
-    </tr>
-</table>
+    <!-- Formulaire -->
+    <div class="card">
+        <p class="card-label">Nouveau livre</p>
+        <form th:action="@{/livre/ajouter}" th:object="${livre}" method="post" action="/livre/ajouter">
+            <div class="grid-3">
+                <div>
+                    <label for="isbn">ISBN</label>
+                    <input type="text" id="isbn" th:field="*{isbn}" name="isbn" placeholder="978-..." />
+                </div>
+                <div>
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" th:field="*{titre}" name="titre" placeholder="Titre du livre" />
+                </div>
+                <div>
+                    <label for="anneeParution">Année de parution</label>
+                    <input type="number" id="anneeParution" th:field="*{anneeParution}" name="anneeParution" placeholder="2024" />
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                Ajouter le livre
+            </button>
+        </form>
+    </div>
 
-<br/><a th:href="@{/}">← Retour au Menu</a>
+    <!-- Tableau -->
+    <div class="card">
+        <div class="section-head">
+            <span class="section-title">Liste des livres</span>
+            <span class="count-badge" th:text="${#lists.size(livres)} + ' livres'">0 livres</span>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th style="width: 140px;">ISBN</th>
+                <th>Titre</th>
+                <th style="text-align: right;">Année</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="l : ${livres}">
+                <td class="isbn-cell" th:text="${l.isbn}">978-...</td>
+                <td>
+                    <div class="title-cell">
+                        <div class="book-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v16h12V4H6zm2 3h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+                        </div>
+                        <span th:text="${l.titre}">Titre</span>
+                    </div>
+                </td>
+                <td style="text-align: right;">
+                    <span class="year-pill" th:text="${l.anneeParution}">2024</span>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(livres)}">
+                <td colspan="3" class="empty-state">Aucun livre enregistré</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
 </body>
 </html>

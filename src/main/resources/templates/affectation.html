@@ -1,153 +1,323 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Affectation</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Affectation</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f5f0ff;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #f0ede8;
             min-height: 100vh;
-            padding: 30px;
+            padding: 36px 20px;
         }
 
-        .container { max-width: 750px; margin: auto; }
+        .page { max-width: 680px; margin: auto; }
 
-        h2 {
-            color: #764ba2;
-            font-size: 2em;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #764ba2;
+        .topbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
         }
 
-        .form-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(118,75,162,0.15);
+        .back-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #faf9f7;
+            border: 1px solid #e2ddd6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            flex-shrink: 0;
         }
 
-        .form-card h3 {
-            color: #764ba2;
+        .back-btn svg { width: 16px; height: 16px; fill: none; stroke: #7a6a5a; stroke-width: 2; }
+
+        .page-title { font-size: 20px; font-weight: 600; color: #2d2620; letter-spacing: -0.3px; }
+        .page-subtitle { font-size: 13px; color: #9a8a78; margin-top: 1px; }
+
+        .card {
+            background: #faf9f7;
+            border-radius: 18px;
+            border: 1px solid #e2ddd6;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #b0a090;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
             margin-bottom: 20px;
         }
 
+        @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; } }
+
         label {
             display: block;
-            color: #555;
-            margin-bottom: 6px;
-            font-weight: bold;
+            font-size: 12px;
+            font-weight: 500;
+            color: #7a6a5a;
+            margin-bottom: 7px;
         }
 
         select {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0d0f0;
-            border-radius: 8px;
-            font-size: 1em;
-            margin-bottom: 15px;
-            background: white;
-            transition: border 0.3s;
+            padding: 11px 14px;
+            background: #f5f2ee;
+            border: 1px solid #e2ddd6;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #2d2620;
+            font-family: inherit;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9' fill='none' stroke='%23a08060' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            cursor: pointer;
+            transition: border-color 0.18s, background 0.18s;
         }
 
         select:focus {
             outline: none;
-            border-color: #764ba2;
+            border-color: #a08060;
+            background-color: #faf9f7;
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 22px;
+            background: #5a4535;
+            color: #f5f0ea;
             border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 1em;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: inherit;
             cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s;
+            transition: background 0.18s;
         }
 
-        .btn-submit:hover { transform: translateY(-2px); }
+        .btn-submit:hover { background: #3d2e22; }
+        .btn-submit svg { width: 14px; height: 14px; fill: #f5f0ea; }
 
-        hr { border: none; border-top: 2px solid #e0d0f0; margin: 20px 0; }
-        h3 { color: #764ba2; margin-bottom: 15px; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(118,75,162,0.15);
+        .section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
         }
 
-        thead {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            color: white;
-        }
+        .section-title { font-size: 13px; font-weight: 500; color: #5a4535; }
 
-        th, td { padding: 14px 18px; text-align: left; }
-        tbody tr:nth-child(even) { background: #f9f4ff; }
-        tbody tr:hover { background: #ede9fe; }
-
-        .points-badge {
-            background: #764ba2;
-            color: white;
-            padding: 3px 10px;
+        .count-badge {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9a8a78;
+            background: #ede8e0;
+            padding: 3px 9px;
             border-radius: 20px;
-            font-size: 0.9em;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #764ba2;
-            text-decoration: none;
-            font-weight: bold;
+        table { width: 100%; border-collapse: collapse; }
+
+        thead tr { border-bottom: 1px solid #e2ddd6; }
+
+        th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 500;
+            color: #b0a090;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0 12px 12px;
         }
 
-        .back-link:hover { text-decoration: underline; }
-    </style></head>
+        th:first-child { padding-left: 0; }
+
+        tbody tr {
+            border-bottom: 1px solid #f0ece6;
+            transition: background 0.15s;
+        }
+
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: #f5f2ee; }
+
+        td {
+            padding: 13px 12px;
+            font-size: 13px;
+            color: #3d3028;
+        }
+
+        td:first-child { padding-left: 0; }
+
+        .id-cell { font-size: 12px; color: #b0a090; width: 50px; }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #fce8d8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: #c86833;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .name-cell { display: flex; align-items: center; }
+
+        .points-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .points-bar {
+            flex: 1;
+            height: 5px;
+            background: #ede8e0;
+            border-radius: 99px;
+            overflow: hidden;
+            min-width: 60px;
+        }
+
+        .points-fill {
+            height: 100%;
+            background: #c86833;
+            border-radius: 99px;
+            transition: width 0.4s;
+        }
+
+        .points-val {
+            font-size: 12px;
+            font-weight: 500;
+            color: #7a6a5a;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 32px 0;
+            color: #b0a090;
+            font-size: 13px;
+        }
+
+        .info-note {
+            font-size: 12px;
+            color: #9a8a78;
+            background: #f5f2ee;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-top: 16px;
+            border-left: 3px solid #d4c5b0;
+        }
+    </style>
+</head>
 <body>
-<h2>Affectation Auteur</h2>
+<div class="page">
 
-<form th:action="@{/livre/affecterAuteur}" method="post">
-    <label>Livre :</label><br/>
-    <select name="isbn">
-        <option value="">Sélectionner un livre</option>
-        <option th:each="l : ${livres}"
-                th:value="${l.isbn}"
-                th:text="${l.titre}"></option>
-    </select><br/><br/>
+    <div class="topbar">
+        <a th:href="@{/}" href="/" class="back-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <div>
+            <div class="page-title">Affectation des Auteurs</div>
+            <div class="page-subtitle">Lier un auteur à un livre</div>
+        </div>
+    </div>
 
-    <label>Auteur :</label><br/>
-    <select name="auteurId">
-        <option value="">Sélectionner un auteur</option>
-        <option th:each="a : ${auteurs}"
-                th:value="${a.id}"
-                th:text="${a.nomPrenom}"></option>
-    </select><br/><br/>
+    <!-- Formulaire affectation -->
+    <div class="card">
+        <p class="card-label">Nouvelle affectation</p>
+        <form th:action="@{/livre/affecterAuteur}" method="post">
+            <div class="grid-2">
+                <div>
+                    <label for="isbn">Livre</label>
+                    <select id="isbn" name="isbn">
+                        <option value="">Sélectionner un livre</option>
+                        <option th:each="l : ${livres}" th:value="${l.isbn}" th:text="${l.titre}"></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="auteurId">Auteur</label>
+                    <select id="auteurId" name="auteurId">
+                        <option value="">Sélectionner un auteur</option>
+                        <option th:each="a : ${auteurs}" th:value="${a.id}" th:text="${a.nomPrenom}"></option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                Affecter
+            </button>
+        </form>
+        <div class="info-note">
+            Chaque nouvelle affectation ajoute <strong>+10 points</strong> à l'auteur sélectionné.
+        </div>
+    </div>
 
-    <button type="submit">Ajouter</button>
-</form>
+    <!-- Classement auteurs -->
+    <div class="card">
+        <div class="section-head">
+            <span class="section-title">Classement des auteurs</span>
+            <span class="count-badge" th:text="${#lists.size(auteurs)} + ' auteurs'">0 auteurs</span>
+        </div>
 
-<hr/>
-<h3>Liste de tous les auteurs</h3>
-<table border="1">
-    <tr>
-        <th>Id</th>
-        <th>Nom Prénom</th>
-        <th>Points</th>
-    </tr>
-    <tr th:each="a : ${auteurs}">
-        <td th:text="${a.id}"></td>
-        <td th:text="${a.nomPrenom}"></td>
-        <td th:text="${a.nbrePoints}"></td>
-    </tr>
-</table>
+        <table>
+            <thead>
+            <tr>
+                <th style="width:50px">ID</th>
+                <th>Auteur</th>
+                <th>Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="a : ${auteurs}">
+                <td class="id-cell" th:text="${a.id}">1</td>
+                <td>
+                    <div class="name-cell">
+                        <div class="avatar" th:text="${#strings.toUpperCase(#strings.substring(a.nomPrenom,0,1))}">A</div>
+                        <span th:text="${a.nomPrenom}">Nom Auteur</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="points-bar-wrap">
+                        <div class="points-bar">
+                            <div class="points-fill" th:style="'width:' + (${a.nbrePoints} > 0 ? (${a.nbrePoints} > 100 ? '100' : ${a.nbrePoints}) : '0') + '%'"></div>
+                        </div>
+                        <span class="points-val" th:text="${a.nbrePoints} + ' pts'">0 pts</span>
+                    </div>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(auteurs)}">
+                <td colspan="3" class="empty-state">Aucun auteur enregistré</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-<br/><a th:href="@{/}">← Retour au Menu</a>
+</div>
 </body>
 </html>
